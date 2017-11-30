@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*- 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 # Create your models here.
 class User(AbstractUser):
     nickname = models.CharField(max_length=50)
@@ -50,7 +51,7 @@ class InterfaceModel(models.Model):
     REASON = (
         ('YES','Y'),
         ('NO','N'),
-    )    
+    )
     testurl = models.CharField(max_length=300)
     defaulturl = models.CharField(max_length=300)
     querycount = models.CharField(max_length=10,choices=QUERY_NUM,default='50')
@@ -63,4 +64,6 @@ class InterfaceModel(models.Model):
     reason = models.CharField(max_length=5,choices=REASON,default='NO')
     remark = models.TextField()
     selfdata = models.FileField(upload_to='./upload/')
+    creater = models.ForeignKey(User)
 
+        

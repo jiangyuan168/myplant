@@ -1,4 +1,4 @@
-from django.forms import ModelForm,TextInput,Select,Textarea,FileInput
+from django.forms import ModelForm,TextInput,Select,Textarea,FileInput,DateTimeInput
 from diff.models import InterfaceModel
 
 class CreateForm(ModelForm):

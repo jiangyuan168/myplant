@@ -11,14 +11,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.RemoveField(
             model_name='interfacemodel',
-            name='defaulturl',
-            field=models.CharField(max_length=300),
-        ),
-        migrations.AlterField(
-            model_name='interfacemodel',
-            name='testurl',
-            field=models.CharField(max_length=300),
+            name='create_time',
         ),
     ]

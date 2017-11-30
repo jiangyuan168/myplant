@@ -2,9 +2,10 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import django.utils.timezone
-import django.core.validators
 import django.contrib.auth.models
+import django.utils.timezone
+from django.conf import settings
+import django.core.validators
 
 
 class Migration(migrations.Migration):
@@ -45,8 +46,8 @@ class Migration(migrations.Migration):
             name='InterfaceModel',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('testurl', models.URLField(max_length=300)),
-                ('defaulturl', models.URLField(max_length=300)),
+                ('testurl', models.CharField(max_length=300)),
+                ('defaulturl', models.CharField(max_length=300)),
                 ('querycount', models.CharField(default=b'50', max_length=10, choices=[(b'50', 50), (b'100', 100), (b'300', 300), (b'500', 500), (b'1000', 1000), (b'2000', 2000), (b'3000', 3000), (b'5000', 5000), (b'10000', 10000)])),
                 ('topn', models.CharField(default=b'10', max_length=10, choices=[(b'1', 1), (b'3', 3), (b'5', 5), (b'10', 10), (b'20', 20)])),
                 ('pn', models.CharField(default=b'1', max_length=10, choices=[(b'1', 1), (b'2', 2), (b'3', 3), (b'4', 4), (b'5', 5)])),
@@ -56,7 +57,9 @@ class Migration(migrations.Migration):
                 ('threadnum', models.CharField(default=b'5', max_length=10, choices=[(b'1', 1), (b'2', 2), (b'3', 3), (b'5', 5)])),
                 ('reason', models.CharField(default=b'NO', max_length=5, choices=[(b'YES', b'Y'), (b'NO', b'N')])),
                 ('remark', models.TextField()),
-                ('selfdata', models.FileField(upload_to=b'./upload')),
+                ('selfdata', models.FileField(upload_to=b'./upload/')),
+                ('create_time', models.DateTimeField(auto_now_add=True)),
+                ('creater', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

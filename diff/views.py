@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import CreateForm 
 from .models import User
@@ -9,7 +9,6 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-	print "yes"
         form = CreateForm(request.POST,request.FILES)
 	print form.is_valid()
         if form.is_valid():
