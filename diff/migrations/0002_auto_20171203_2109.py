@@ -11,8 +11,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
+        migrations.AlterModelOptions(
+            name='interfacemodel',
+            options={'ordering': ['-create_time']},
+        ),
+        migrations.AddField(
             model_name='interfacemodel',
-            name='create_time',
+            name='process',
+            field=models.CharField(default=b'0', max_length=10, blank=True),
         ),
     ]

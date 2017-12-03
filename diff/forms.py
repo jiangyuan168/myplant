@@ -1,6 +1,11 @@
+# -*- coding: utf-8 -*-  
 from django.forms import ModelForm,TextInput,Select,Textarea,FileInput,DateTimeInput
-from diff.models import InterfaceModel
-
+from diff.models import InterfaceModel,User
+from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import ugettext_lazy as _
+import sys 
+reload(sys)
+sys.setdefaultencoding('utf-8') 
 class CreateForm(ModelForm):
     class Meta:
         model = InterfaceModel
@@ -18,4 +23,13 @@ class CreateForm(ModelForm):
             'reason': Select(attrs={'class':'form-control','id':'interfacetask-reason'}),
             'remark': Textarea(attrs={'class':'form-control','id':'interfacetask-remark','rows':3}),
             'selfdata': FileInput(attrs={'class':'form-control','id':'interfacetask-selfdata'}),
+        }
+
+class RegisterForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ['username','email','nickname']
+        labels = {
+            'nickname':_('昵称'),
+
         }

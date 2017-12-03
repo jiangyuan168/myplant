@@ -4,7 +4,8 @@ from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 # Create your models here.
 class User(AbstractUser):
-    nickname = models.CharField(max_length=50)
+    nickname = models.CharField(max_length=50,blank=True)
+    create_time = models.DateTimeField(auto_now_add=True)
 
     class Meta(AbstractUser.Meta):
         pass
@@ -52,6 +53,7 @@ class InterfaceModel(models.Model):
         ('YES','Y'),
         ('NO','N'),
     )
+    cid = models.IntegerField(default=1)
     testurl = models.CharField(max_length=300)
     defaulturl = models.CharField(max_length=300)
     querycount = models.CharField(max_length=10,choices=QUERY_NUM,default='50')
@@ -63,7 +65,10 @@ class InterfaceModel(models.Model):
     threadnum = models.CharField(max_length=10,choices=THREAD_NUM,default='5')
     reason = models.CharField(max_length=5,choices=REASON,default='NO')
     remark = models.TextField()
-    selfdata = models.FileField(upload_to='./upload/')
-    creater = models.ForeignKey(User)
-
-        
+    upload = models.BooleanField(default=False)
+    selfdata = models.FileField(upload_to='./upload/',blank=True)
+    creater = models.CharField(max_length=10)
+    create_time = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10,blank=True,default='0') 
+    class Meta:
+        ordering = ["-create_time"]       
