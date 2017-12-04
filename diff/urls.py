@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^create/$', views.create, name='create'),
     url(r'^register/$', views.register, name='register'),
     url(r'^channel/(?P<cid>[0-9]+)/$', views.ChannelView.as_view(), name='channel'),
+    url(r'^detail/$', views.detail, name='detail'),
     #url(r'^channel/(?P<cid>[0-9]+)/$', views.channel, name='channel'),
 ]

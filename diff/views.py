@@ -69,3 +69,7 @@ class ChannelView(ListView):
         channel_list = InterfaceModel.objects.all().order_by('-create_time')
         return super(ChannelView,self).get_queryset().filter(cid=self.kwargs.get('cid'))
 
+
+
+def detail(request):
+   return render(request, 'diff/detail.html') 
