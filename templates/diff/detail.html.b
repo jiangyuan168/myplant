@@ -56,16 +56,14 @@
                  </tbody>
                 </table>
         </div>
-	</div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
-
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-area-chart"></i> Diff Top Chart</div>
-         <div class="card-body">
-           <div id="DiffTopChart" style="min-width:400px;height:400px"></div>	
-	     <script>
+        <div class="card-body">
+        <div id="DiffTopChart" style="min-width:400px;height:400px"></div>	
+	  <script>
 		var op={
 		    chart: {
 		        type: 'column'
@@ -186,7 +184,6 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
-
         <div class="col-lg-6">
           <!-- Example Pie Chart Card-->
           <div class="card mb-3">
@@ -251,7 +248,6 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
-     </div>
 
       <div class="row">
         <div class="col-lg-6">
@@ -313,12 +309,11 @@
 		    }]
 		};
 		chart = Highcharts.chart('wenda_so_influence_Chart', options);
-             </script>
+          </script>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
-
         <div class="col-lg-6">
           <!-- Example Pie Chart Card-->
           <div class="card mb-3">
@@ -378,154 +373,24 @@
 		    }]
 		};
 		chart = Highcharts.chart('zhidao_baidu_influence_Chart', options);
-             </script>
+          </script>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
+
       </div>
-
-
-      <div class="row">
-        <div class="col-lg-6">
-          <!-- Example Bar Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bar-chart"></i> baike.so.com影响统计(dcg得分对比)</div>
-            <div class="card-body">
-	      <div id="baike_so_influence_Chart" style="min-width:400px;height:400px"></div>
-	      <script>
-		var options={
-		    chart: {
-		        type: 'column'
-		    },
-		    title: {
-		        text: ''
-		    },
-		    xAxis: {
-		        categories:[
-				{% for k,v in baike_so_influence.items %}
-                            		"{{k}}",
-                        	{% endfor %}
-				],
-		        crosshair: true
-		    },
-		    yAxis: {
-		        min: 0,
-		        title: {
-		            text: 'value'
-		        }
-		    },
-		    credits:{
-		        enabled: false // 禁用版权信息
-		    },
-		    tooltip: {
-		        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-		        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-		        footerFormat: '</table>',
-		        shared: true,
-		        useHTML: true
-		    },
-		    plotOptions: {
-		        column: {
-		            pointPadding: 0.2,
-		            borderWidth: 0,
-		            dataLabels: {
-		                enabled: true,
-		                // ,allowOverlap 默认是 false，即不允许数据标签重叠
-		            }
-		        },
-		    },
-		    series: [{
-		        data:  [
-                                {% for k,v in baike_so_influence.items %}
-                                        {{ v }},
-                                {% endfor %}
-                                ],
-		    }]
-		};
-		chart = Highcharts.chart('baike_so_influence_Chart', options);
-             </script>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <!-- Example Pie Chart Card-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-pie-chart"></i> baike.baidu.com影响统计(dcg得分对比)</div>
-            <div class="card-body">
-	      <div id="baike_baidu_influence_Chart" style="min-width:400px;height:400px"></div>
-	      <script>
-		var options={
-		    chart: {
-		        type: 'column'
-		    },
-		    title: {
-		        text: ''
-		    },
-		    xAxis: {
-		        categories:[
-				{% for k,v in baike_baidu_influence.items %}
-                            		"{{k}}",
-                        	{% endfor %}
-				],
-		        crosshair: true
-		    },
-		    yAxis: {
-		        min: 0,
-		        title: {
-		            text: 'value'
-		        }
-		    },
-		    credits:{
-		        enabled: false // 禁用版权信息
-		    },
-		    tooltip: {
-		        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-		        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-		        footerFormat: '</table>',
-		        shared: true,
-		        useHTML: true
-		    },
-		    plotOptions: {
-		        column: {
-		            pointPadding: 0.2,
-		            borderWidth: 0,
-		            dataLabels: {
-		                enabled: true,
-		                // ,allowOverlap 默认是 false，即不允许数据标签重叠
-		            }
-		        },
-		    },
-		    series: [{
-		        data:  [
-                                {% for k,v in baike_baidu_influence.items %}
-                                        {{ v }},
-                                {% endfor %}
-                                ],
-		    }]
-		};
-		chart = Highcharts.chart('baike_baidu_influence_Chart', options);
-             </script>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          </div>
-        </div>
-      </div>
-
     </div>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+</div>
 <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
 
 <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
 
 <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>
+
+<div id="container1" style="min-width:700px;height:400px"></div>
 {% endblock main %}}
